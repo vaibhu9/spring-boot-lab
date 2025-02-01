@@ -1,0 +1,155 @@
+/* Global Styles */
+body {
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  background: linear-gradient(135deg, #f3f4f7, #e1e6f0); /* Light gradient background */
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #3b82f6; /* Attractive blue color */
+  font-size: 2.5rem; /* Bigger heading */
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.3); /* Subtle text shadow */
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background: linear-gradient(145deg, #4c7bff, #3a5fc1); /* Gradient button */
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(145deg, #3a5fc1, #4c7bff); /* Reverse gradient on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow on hover */
+}
+
+.btn-secondary {
+  background: linear-gradient(145deg, #34d399, #10b981); /* Green button */
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(145deg, #10b981, #34d399);
+}
+
+.btn-danger {
+  background: linear-gradient(145deg, #ef4444, #dc2626); /* Red button */
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(145deg, #dc2626, #ef4444);
+}
+
+/* Card Styling */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Strong card shadow */
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.input, select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input:focus, select:focus {
+  border-color: #3b82f6; /* Blue border on focus */
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); /* Focused glow effect */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="date"]::-webkit-outer-spin-button, 
+input[type="date"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Striped rows */
+}
+
+tr:hover {
+  background-color: #f1f5f9; /* Hover effect on rows */
+}
+
+tr {
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
