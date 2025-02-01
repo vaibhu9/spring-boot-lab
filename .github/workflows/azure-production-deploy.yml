@@ -1,0 +1,48 @@
+name: Azure Spring Cloud Deploy
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  ASC_PACKAGE_PATH: ${{ github.workspace }}/build/libs
+  JAVA_VERSION: 21
+  AZURE_SUBSCRIPTION: abcd-efgh-ijkl-mnop-qrst
+
+jobs:
+  deploy-to-production:
+    name: Deploy To Production With Artifact
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Github Action
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'microsoft'
+ 
+      - name: Set Gradle Wrapper Permissions & Clean, Build
+        run: |
+          chmod 755 ./gradlew
+          ./gradlew clean build -x test
+          
+      - name: Login via Azure CLI
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+ 
+      - name: Deploy To Production With Artifact
+        uses: azure/spring-cloud-deploy@v1
+        with:
+          azure-subscription: ${{ env.AZURE_SUBSCRIPTION }}
+          action: Deploy
+          service-name: amazingservices
+          app-name: springbootlab
+          use-staging-deployment: false
+          package: ${{ env.ASC_PACKAGE_PATH }}/springbootlab-0.0.1-SNAPSHOT.jar

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category & Product CRUD</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Category & Product Management</h1>
+
+    <div class="card">
+        <h2>Categories</h2>
+        <form id="category-form">
+            <input type="text" id="category-name" placeholder="Category Name" required>
+            <button type="submit">Add/Update Category</button>
+        </form>
+        <table id="categories-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Products</h2>
+        <form id="product-form">
+            <input type="text" id="product-name" placeholder="Product Name" required>
+            <input type="date" id="manufacture-date" required>
+            <input type="date" id="expiry-date" required>
+            <input type="number" id="price" placeholder="Price" step="0.01" required>
+            <select id="category-id" required>
+                <option value="" disabled selected>Select Category</option>
+            </select>
+            <button type="submit">Add/Update Product</button>
+        </form>
+        <table id="products-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Manufacture Date</th>
+                    <th>Expiry Date</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

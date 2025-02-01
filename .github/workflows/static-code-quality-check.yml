@@ -1,0 +1,38 @@
+
+name: Static Code Quality Check
+
+on:
+  workflow_dispatch:
+
+env:
+  JAVA_VERSION: 21
+  GRADLE_VERSION: 8.5
+
+jobs:
+  static-code-quality-check:
+    name: SCQC Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'microsoft'
+
+      - name: Set up Gradle ${{ env.GRADLE_VERSION }}
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 
+        with:
+          gradle-version: ${{ env.GRADLE_VERSION }}
+
+      - name: Set Gradle Wrapper Executable Permissions
+        run: chmod +x ./gradlew
+
+      - name: Gradle Clean, Build
+        run: ./gradlew clean build -x test
+
+      - name: Static Code Quality Check
+        run: ./gradlew sonar
